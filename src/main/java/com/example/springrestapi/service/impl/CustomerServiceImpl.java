@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 public class CustomerServiceImpl implements CustomerService {
     private CustomerRepo repo;
 
-    //sdsdsd
     @Autowired
     public CustomerServiceImpl(CustomerRepo repo) {
         this.repo = repo;
@@ -34,7 +33,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Optional<CustomerModel> getById(Long id) {
+    public Optional<CustomerModel> getById(Integer id) {
         if(id == 0) {
             return Optional.empty();
         }
@@ -58,7 +57,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Optional<CustomerModel> update(Long id, CustomerModel model) {
+    public Optional<CustomerModel> update(Integer id, CustomerModel model) {
         if(id == 0) {
             return Optional.empty();
         }
@@ -80,7 +79,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Optional<CustomerModel> delete(Long id) {
+    public Optional<CustomerModel> delete(Integer id) {
         if(id == 0) {
             return Optional.empty();
         }
