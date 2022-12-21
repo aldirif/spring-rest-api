@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class CategoryModel {
-    private int id;
+    private Long id;
     private String code;
     private String name;
 

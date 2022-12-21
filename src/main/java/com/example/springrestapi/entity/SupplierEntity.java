@@ -21,7 +21,6 @@ public class SupplierEntity {
     @TableGenerator(name = "supplier_id_generator", table = "sequence_tab",
             pkColumnName = "gen_name", valueColumnName = "gen_value",
             pkColumnValue="supplier_id", initialValue=0, allocationSize=0)
-
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "supplier_id_generator")
     private Long id;
 
@@ -46,7 +45,7 @@ public class SupplierEntity {
     private String phone;
 
     @OneToMany(mappedBy = "supplier")
-    private Set<ProductEntity> products = new HashSet<>();
+    private Set<ProductEntity> products;
 
     public SupplierEntity(SupplierModel model) {
         BeanUtils.copyProperties(model, this);

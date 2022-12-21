@@ -27,6 +27,7 @@ public class CustomerModel {
     private String city;
     private String country;
     private String postalCode;
+
     public CustomerModel(CustomerEntity entity) {
         BeanUtils.copyProperties(entity, this);
     }

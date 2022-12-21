@@ -20,7 +20,6 @@ public class ProductEntity {
     @TableGenerator(name = "product_id_generator", table = "sequence_tab",
             pkColumnName = "gen_name", valueColumnName = "gen_value",
             pkColumnValue="product_id", initialValue=0, allocationSize=0)
-
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "product_id_generator")
     private Long id;
 
@@ -34,7 +33,7 @@ public class ProductEntity {
     private Double price;
 
     @Column(name = "category_id", nullable = false)
-    private int categoryId;
+    private Long categoryId;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id", insertable = false, updatable = false)
@@ -48,7 +47,7 @@ public class ProductEntity {
     private SupplierEntity supplier;
 
     @OneToMany(mappedBy = "product")
-    private Set<PurchaseOrderDetailEntity> purchaseOrderDetailEntities = new HashSet<>();
+    private Set<PurchaseOrderDetailEntity> purchaseOrderDetails = new HashSet<>();
 
     public ProductEntity(ProductModel model) {
         BeanUtils.copyProperties(model, this);

@@ -33,7 +33,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Optional<CustomerModel> getById(Integer id) {
+    public Optional<CustomerModel> getById(Long id) {
         if(id == 0) {
             return Optional.empty();
         }
@@ -57,7 +57,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Optional<CustomerModel> update(Integer id, CustomerModel model) {
+    public Optional<CustomerModel> update(Long id, CustomerModel model) {
         if(id == 0) {
             return Optional.empty();
         }
@@ -79,7 +79,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Optional<CustomerModel> delete(Integer id) {
+    public Optional<CustomerModel> delete(Long id) {
         if(id == 0) {
             return Optional.empty();
         }

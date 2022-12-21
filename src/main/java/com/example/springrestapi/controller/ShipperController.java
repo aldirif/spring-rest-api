@@ -1,8 +1,8 @@
 package com.example.springrestapi.controller;
 
-import com.example.springrestapi.model.ProductModel;
 import com.example.springrestapi.model.ResponseModel;
-import com.example.springrestapi.service.ProductService;
+import com.example.springrestapi.model.ShipperModel;
+import com.example.springrestapi.service.ShipperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,18 +11,18 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/products")
-public class ProductController {
-    private ProductService service;
+@RequestMapping("/shippers")
+public class ShipperController {
+    private ShipperService service;
 
     @Autowired
-    public ProductController(ProductService service) {
+    public ShipperController(ShipperService service){
         this.service = service;
     }
 
     @GetMapping
     public ResponseEntity<Object> get(){
-        List<ProductModel> result = service.getAll();
+        List<ShipperModel> result = service.getAll();
         return ResponseEntity.ok().body(
                 new ResponseModel(200,"SUCCESS", result)
         );
@@ -30,23 +30,23 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getById(@PathVariable("id") Long id){
-        Optional<ProductModel> result = service.getById(id);
+        Optional<ShipperModel> result = service.getById(id);
         return ResponseEntity.ok().body(
                 new ResponseModel(200,"SUCCESS", result)
         );
     }
 
     @PostMapping()
-    public ResponseEntity<Object> saveProduct(@RequestBody ProductModel request){
-        Optional<ProductModel> result = service.save(request);
+    public ResponseEntity<Object> saveProduct(@RequestBody ShipperModel request){
+        Optional<ShipperModel> result = service.save(request);
         return ResponseEntity.ok().body(
                 new ResponseModel(200,"SUCCESS", result)
         );
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Object> updateProduct(@PathVariable("id") Long id, @RequestBody ProductModel request){
-        Optional<ProductModel> result = service.update(id, request);
+    public ResponseEntity<Object> updateProduct(@PathVariable("id") Long id, @RequestBody ShipperModel request){
+        Optional<ShipperModel> result = service.update(id, request);
         return ResponseEntity.ok().body(
                 new ResponseModel(200,"SUCCESS", result)
         );
@@ -54,11 +54,9 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable("id") Long id){
-        Optional<ProductModel> result = service.delete(id);
+        Optional<ShipperModel> result = service.delete(id);
         return ResponseEntity.ok().body(
                 new ResponseModel(200,"SUCCESS", result)
         );
     }
 }
-
-

@@ -20,7 +20,6 @@ public class ShipperEntity {
     @TableGenerator(name = "shipper_id_generator", table = "sequence_tab",
             pkColumnName = "gen_name", valueColumnName = "gen_value",
             pkColumnValue="shipper_id", initialValue=0, allocationSize=0)
-
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "shipper_id_generator")
     private Long id;
 
@@ -30,7 +29,7 @@ public class ShipperEntity {
     private String phone;
 
     @OneToMany(mappedBy = "shipper")
-    private Set<PurchaseOrderEntity> purchaseOrder = new HashSet<>();
+    private Set<PurchaseOrderEntity> purchaseOrders = new HashSet<>();
 
     public ShipperEntity(ShipperModel model) {
         BeanUtils.copyProperties(model, this);

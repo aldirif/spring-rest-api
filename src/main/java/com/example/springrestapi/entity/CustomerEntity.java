@@ -22,7 +22,6 @@ public class CustomerEntity {
     @TableGenerator(name = "customer_id_generator", table = "sequence_tab",
             pkColumnName = "gen_name", valueColumnName = "gen_value",
             pkColumnValue="customer_id", initialValue=0, allocationSize=0)
-
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "customer_id_generator")
     private Long id;
 
@@ -51,11 +50,12 @@ public class CustomerEntity {
     private String postalCode;
 
     @OneToMany(mappedBy = "customer")
-    private Set<PurchaseOrderEntity> purchaseOrder = new HashSet<>();
+    private Set<PurchaseOrderEntity> purchaseOrders = new HashSet<>();
 
     public CustomerEntity(CustomerModel model) {
         BeanUtils.copyProperties(model, this);
     }
 }
+
 
 
