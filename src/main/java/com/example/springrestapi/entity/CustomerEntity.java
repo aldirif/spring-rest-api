@@ -9,6 +9,8 @@ import org.springframework.beans.BeanUtils;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,6 +22,7 @@ public class CustomerEntity {
     @TableGenerator(name = "customer_id_generator", table = "sequence_tab",
             pkColumnName = "gen_name", valueColumnName = "gen_value",
             pkColumnValue="customer_id", initialValue=0, allocationSize=0)
+
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "customer_id_generator")
     private Long id;
 
@@ -46,6 +49,9 @@ public class CustomerEntity {
 
     @Column(name = "postal_code", length = 10)
     private String postalCode;
+
+    @OneToMany(mappedBy = "customer")
+    private Set<PurchaseOrderEntity> purchaseOrder = new HashSet<>();
 
     public CustomerEntity(CustomerModel model) {
         BeanUtils.copyProperties(model, this);

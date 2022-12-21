@@ -17,18 +17,23 @@ public class PurchaseOrderDetailEntity {
     @Id
     @TableGenerator(name = "po_detail_id_generator", table = "sequence_tab",
             pkColumnName = "gen_name", valueColumnName = "gen_value",
-            pkColumnValue="purchase_order_detail_id", initialValue=0, allocationSize=0)
+            pkColumnValue="po_detail_id", initialValue=0, allocationSize=0)
+
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "po_detail_id_generator")
     private Integer id;
 
     @Column(name = "po_id")
     private Integer poId;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "po_id", insertable = false, updatable = false)
+    private PurchaseOrderEntity purchaseOrderEntity;
+
     @Column(name = "product_id", nullable = false)
-    private Integer productId;
+    private Long productId;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id",insertable = false, updatable = false)
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
     private ProductEntity product;
 
     @Column(name = "quantity", nullable = false)

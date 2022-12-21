@@ -1,8 +1,10 @@
 package com.example.springrestapi.model;
 
+import com.example.springrestapi.entity.PurchaseOrderEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -12,7 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PurchaseOrderModel {
-    private int id;
+    private Integer id;
     private String poCode;
     private Integer customerId;
     private Integer employeeId;
@@ -21,4 +23,8 @@ public class PurchaseOrderModel {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date poDate;
     private Double totalAmount;
+
+    public PurchaseOrderModel(PurchaseOrderEntity entity) {
+        BeanUtils.copyProperties(entity, this);
+    }
 }

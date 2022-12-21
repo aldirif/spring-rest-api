@@ -20,6 +20,7 @@ public class CategoryEntity {
     @TableGenerator(name = "id_generator", table = "sequence_tab",
             pkColumnName = "gen_name", valueColumnName = "gen_value",
             pkColumnValue="category_id", initialValue=0, allocationSize=0)
+
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "id_generator")
     private int id;
 

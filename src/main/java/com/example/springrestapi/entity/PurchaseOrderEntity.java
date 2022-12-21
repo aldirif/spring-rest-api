@@ -9,6 +9,8 @@ import org.springframework.beans.BeanUtils;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -19,7 +21,8 @@ public class PurchaseOrderEntity {
     @Id
     @TableGenerator(name = "po_id_generator", table = "sequence_tab",
             pkColumnName = "gen_name", valueColumnName = "gen_value",
-            pkColumnValue="purchase_order_id", initialValue=0, allocationSize=0)
+            pkColumnValue="po_id", initialValue=0, allocationSize=0)
+
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "po_id_generator")
     private Integer id;
 
@@ -27,21 +30,21 @@ public class PurchaseOrderEntity {
     private String poCode;
 
     @Column(name = "customer_id", nullable = false)
-    private Integer customerId;
+    private Long customerId;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id", insertable = false, updatable = false)
     private CustomerEntity customer;
 
     @Column(name = "employee_id", nullable = false)
-    private Integer employeeId;
+    private Long employeeId;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "employee_id", insertable = false, updatable = false)
     private EmployeeEntity employee;
 
     @Column(name = "shipper_id", nullable = false)
-    private Integer shipperId;
+    private Long shipperId;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "shipper_id", insertable = false, updatable = false)
@@ -53,6 +56,9 @@ public class PurchaseOrderEntity {
 
     @Column(name = "total_amount", nullable = false)
     private Double totalAmount;
+
+    @OneToMany(mappedBy = "purchaseOrderEntity")
+    private Set<PurchaseOrderDetailEntity> purchaseOrderDetailEntities = new HashSet<>();
 
     public PurchaseOrderEntity(PurchaseOrderDetailModel model) {
         BeanUtils.copyProperties(model, this);

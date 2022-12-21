@@ -22,6 +22,7 @@ public class EmployeeEntity {
     @TableGenerator(name = "employee_id_generator", table = "sequence_tab",
             pkColumnName = "gen_name", valueColumnName = "gen_value",
             pkColumnValue="employee_id", initialValue=0, allocationSize=0)
+
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "employee_id_generator")
     private Long id;
 
@@ -53,7 +54,7 @@ public class EmployeeEntity {
     private String notes;
 
     @OneToMany(mappedBy = "employee")
-    private Set<PurchaseOrderEntity> purchaseOrderEntities = new HashSet<>();
+    private Set<PurchaseOrderEntity> purchaseOrder = new HashSet<>();
 
     public EmployeeEntity(EmployeeModel model) {
         BeanUtils.copyProperties(model, this);

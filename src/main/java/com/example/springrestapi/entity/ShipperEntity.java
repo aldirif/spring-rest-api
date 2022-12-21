@@ -1,7 +1,6 @@
 package com.example.springrestapi.entity;
 
 import com.example.springrestapi.model.ShipperModel;
-import com.example.springrestapi.model.SupplierModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +20,7 @@ public class ShipperEntity {
     @TableGenerator(name = "shipper_id_generator", table = "sequence_tab",
             pkColumnName = "gen_name", valueColumnName = "gen_value",
             pkColumnValue="shipper_id", initialValue=0, allocationSize=0)
+
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "shipper_id_generator")
     private Long id;
 
@@ -30,7 +30,7 @@ public class ShipperEntity {
     private String phone;
 
     @OneToMany(mappedBy = "shipper")
-    private Set<PurchaseOrderEntity> purchaseOrderEntities = new HashSet<>();
+    private Set<PurchaseOrderEntity> purchaseOrder = new HashSet<>();
 
     public ShipperEntity(ShipperModel model) {
         BeanUtils.copyProperties(model, this);
