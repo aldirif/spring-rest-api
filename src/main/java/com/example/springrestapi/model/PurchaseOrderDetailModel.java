@@ -1,14 +1,10 @@
 package com.example.springrestapi.model;
 
-import com.example.springrestapi.entity.ProductEntity;
-import com.example.springrestapi.entity.PurchaseOrderDetailEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.BeanUtils;
 
 import java.io.Serializable;
-
 
 @Data
 @NoArgsConstructor

@@ -1,7 +1,6 @@
 package com.example.springrestapi.model;
 
 import com.example.springrestapi.entity.CustomerEntity;
-import com.example.springrestapi.entity.ProductEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

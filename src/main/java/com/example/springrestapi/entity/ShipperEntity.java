@@ -25,6 +25,7 @@ public class ShipperEntity {
 
     @Column(name = "shipper_name", length = 100, nullable = false)
     private String shipperName;
+
     @Column(name = "phone", length = 20)
     private String phone;
 

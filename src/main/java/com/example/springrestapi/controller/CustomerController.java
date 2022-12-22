@@ -1,9 +1,7 @@
 package com.example.springrestapi.controller;
 
-import com.example.springrestapi.model.CategoryModel;
 import com.example.springrestapi.model.CustomerModel;
 import com.example.springrestapi.model.ResponseModel;
-import com.example.springrestapi.service.CategoryService;
 import com.example.springrestapi.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,6 +1,5 @@
 package com.example.springrestapi.entity;
 
-import com.example.springrestapi.model.CustomerModel;
 import com.example.springrestapi.model.SupplierModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +7,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -29,6 +27,7 @@ public class SupplierEntity {
 
     @Column(name = "contact_name", length = 100, nullable = false)
     private String contactName;
+
     @Column(name = "address", length = 200)
     private String address;
 

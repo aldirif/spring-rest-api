@@ -1,10 +1,8 @@
 package com.example.springrestapi.model;
 
-import com.example.springrestapi.entity.PurchaseOrderEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.BeanUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;

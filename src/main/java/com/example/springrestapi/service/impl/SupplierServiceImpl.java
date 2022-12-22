@@ -48,7 +48,7 @@ public class SupplierServiceImpl implements SupplierService {
             this.repo.save(entity);
             return Optional.of(new SupplierModel(entity));
         }catch (Exception e){
-            log.error("Category save is failed, error: {}", e.getMessage());
+            log.error("Save is failed, error: {}", e.getMessage());
             return Optional.empty();
         }
     }
@@ -70,7 +70,7 @@ public class SupplierServiceImpl implements SupplierService {
             this.repo.save(result);
             return Optional.of(new SupplierModel(result));
         }catch (Exception e){
-            log.error("Category update is failed, error: {}", e.getMessage());
+            log.error("Update is failed, error: {}", e.getMessage());
             return Optional.empty();
         }
     }
@@ -90,7 +90,7 @@ public class SupplierServiceImpl implements SupplierService {
             this.repo.delete(result);
             return Optional.of(new SupplierModel(result));
         }catch (Exception e){
-            log.error("Category delete is failed, error: {}", e.getMessage());
+            log.error("Delete is failed, error: {}", e.getMessage());
             return Optional.empty();
         }
     }
